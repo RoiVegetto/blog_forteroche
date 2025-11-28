@@ -94,8 +94,8 @@ class ArticleManager extends AbstractEntityManager
     }
 
     /**
-     * Incrémente le compteur de vues d'un article.
-     * @param int $id : l'id de l'article.
+     * Incrément the compteur of vues article.
+     * @param int $id : id of article.
      * @return void
      */
     public function incrementViews(int $id) : void

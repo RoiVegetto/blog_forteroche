@@ -130,7 +130,7 @@
     }
 
     /**
-     * Setter pour les vues.
+     * Setter for the vues.
      * @param int $views
      */
     public function setViews(int $views) : void 
@@ -139,7 +139,7 @@
     }
 
     /**
-     * Getter pour les vues.
+     * Getter for the vues.
      * @return int
      */
     public function getViews() : int 
