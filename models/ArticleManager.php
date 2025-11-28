@@ -104,4 +104,34 @@ class ArticleManager extends AbstractEntityManager
         $this->db->query($sql, ['id' => $id]);
     }
 
+    /**
+     * Retrieves data for monitoring: (Récupère les données pour le monitoring :)
+     * title, views, number of comments, creation date (titre, vues, nb_comments, date_creation)
+     */
+    public function getMonitoringData(string $orderBy = "date_creation", string $direction = "DESC") : array
+    {
+        // Authorized sorting columns (Colonnes autorisées pour le tri)
+        $allowed = ["title", "views", "nb_comments", "date_creation"];
+        if (!in_array($orderBy, $allowed)) {
+            $orderBy = "date_creation";
+        }
+
+        $direction = strtoupper($direction) === "ASC" ? "ASC" : "DESC";
+
+        $sql = "
+            SELECT 
+                a.id,
+                a.title,
+                a.views,
+                a.date_creation,
+                (SELECT COUNT(*) FROM comment c WHERE c.id_article = a.id) AS nb_comments
+            FROM article a
+            ORDER BY $orderBy $direction
+        ";
+
+        $result = $this->db->query($sql);
+        return $result->fetchAll();
+    }
+
+
 }

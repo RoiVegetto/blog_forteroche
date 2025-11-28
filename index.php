@@ -37,6 +37,11 @@ try {
             $commentController->addComment();
             break;
 
+        // New page for monitoring
+        case 'showMonitoring':
+            $adminController = new AdminController();
+            $adminController->showMonitoring();
+            break;
 
         // Section admin & connexion. 
         case 'admin': 

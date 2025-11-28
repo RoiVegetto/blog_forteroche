@@ -176,4 +176,28 @@ class AdminController {
         // On redirige vers la page d'administration.
         Utils::redirect("admin");
     }
+
+    /**
+     * Page of monitoring blog.
+     * @return void
+     */
+    public function showMonitoring() : void
+    {
+        $this->checkIfUserIsConnected();
+
+        // Retrieving sorting parameters (Récupération des paramètres de tri)
+        $orderBy = Utils::request("sort", "date_creation");
+        $direction = Utils::request("dir", "DESC");
+
+        $articleManager = new ArticleManager();
+        $articles = $articleManager->getMonitoringData($orderBy, $direction);
+
+        $view = new View("Monitoring du blog");
+        $view->render("monitoring", [
+            'articles' => $articles,
+            'orderBy' => $orderBy,
+            'direction' => $direction
+        ]);
+    }
+
 }

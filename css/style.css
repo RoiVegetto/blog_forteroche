@@ -294,7 +294,7 @@ a.info {
 }
 
 .error h2 {
-    color: var(--titleColor)
+    color: var(--titleColor);
 }
 
 .error a {
@@ -349,4 +349,26 @@ footer {
     padding: 20px;
     color: white;
     background-color: var(--headerColor);
+}
+
+/* Monitoring page */
+
+.monitor-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.monitor-table thead th {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.monitor-table tbody td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.monitor-table tbody tr:nth-child(even) {
+    background: #f2f2f2;
 }
