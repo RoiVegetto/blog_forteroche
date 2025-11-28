@@ -25,6 +25,10 @@ class ArticleController
         $id = Utils::request("id", -1);
 
         $articleManager = new ArticleManager();
+
+        // Increment the number of vue
+        $articleManager->incrementViews($id);
+
         $article = $articleManager->getArticleById($id);
         
         if (!$article) {
